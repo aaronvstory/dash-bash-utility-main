@@ -75,7 +75,6 @@ const EnhancedCalculator = () => {
   const [newCategoryName, setNewCategoryName] = useState('');
   const [isAddingCategory, setIsAddingCategory] = useState(false);
   const [draggedCategory, setDraggedCategory] = useState(-1);
-  const [draggedStore, setDraggedStore] = useState({ categoryId: -1, storeId: -1 });
   const [currentTime, setCurrentTime] = useState(new Date());
   const [saveNotification, setSaveNotification] = useState('');
 
@@ -953,7 +952,7 @@ const EnhancedCalculator = () => {
             </button>
             
             {isMessagesOpen && (
-              <div className="border-t border-gray-700 p-4">
+              <div className="border-t border-gray-700 p-4 space-y-2">
                   {messages.map((message, index) => (
                     <div
                       key={index}
@@ -1314,6 +1313,7 @@ const EnhancedCalculator = () => {
                           type="text"
                           value={newCategoryName}
                           onChange={(e) => setNewCategoryName(e.target.value)}
+                          onKeyPress={(e) => e.key === 'Enter' && addCategory()}
                           className="flex-1 bg-gray-600 border border-gray-500 rounded px-2 py-1 text-sm text-white focus:outline-none focus:ring-1 focus:ring-blue-500"
                           placeholder="Category name (e.g., Walgreens)"
                           autoFocus
